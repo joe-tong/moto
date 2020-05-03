@@ -1,5 +1,5 @@
 <template>
-	<div id='order'>
+	<view id='order'>
 		<div  v-for="(item,index) in orderList" :key="index" 
 		:class="[(orderList.length-1)==index?'last':'']"
 		hover-class="hover" :hover-stay-time="150" @tap='toMap' >
@@ -10,13 +10,24 @@
 				 <button class="state_bt_un" >抢单</button>
 		     </div>
 		</div>
-	</div>
+		<!--加载loadding-->
+		<tui-loadmore :visible="loadding"></tui-loadmore>
+		<tui-nomore :visible="!pullUpOn"></tui-nomore>
+	</view>
+
+	<!--加载loadding-->
 </template>
 
 <script>
 	import request from '@/common/js/request.js'
+	import tuiLoadmore from "@/components/loadmore/loadmore"
+	import tuiNomore from "@/components/nomore/nomore"
 	
 	export default {
+		components: {
+			tuiLoadmore,
+			tuiNomore
+		},
 		data() {
 			return {
 				pageIndex: 1,
@@ -37,17 +48,6 @@
 			catch(e => console.log(e)) // 请求任务的结果处理
 		},
 		methods: {
-			getOrderList: function(){
-				var param = {
-				          'pageNum':this.pageIndex,
-				        };
-				request.get("/driver/order/list",param).
-				then(res => {
-					this.orderList = res.data;
-					console.log("orderList",this.orderList)
-				}).
-				catch(e => console.log(e)) // 请求任务的结果处理
-			},
 			toMap() {
 				this.$router.push('pages/home/home')
 			}
@@ -55,29 +55,53 @@
 		
 		//页面相关事件处理函数--监听用户下拉动作
 		onPullDownRefresh: function() {
-			//延时为了看效果
-			setTimeout(() => {
-				getOrderList()
-				this.pageIndex = 1;
-				this.pullUpOn = true;
-				this.loadding = false;
-				uni.stopPullDownRefresh();
-				this.tui.toast("刷新成功");
-			}, 200)
+			// this.pullUpOn = true;
+			// if (this.loadding) return;
+			// this.loadding = true;
+			
+			// var param = {'pageNum':this.pageIndex+1};
+					
+			// request.get("/driver/order/list",param).
+			// then(res => {
+			// 	this.loadding = false;
+				
+			// 	if(res.data == undefined || res.data.length <= 0 ){
+			// 		console.log("no more",res.orderList);
+			// 		this.pullUpOn = false; 
+			// 	}else {
+			// 		alert(" more")
+			// 		this.orderList = this.orderList.concat(res.data);
+			// 		console.log("orderList",this.orderList)
+			// 		this.pageIndex = this.pageIndex + 1;
+			// 	}
+			// }).
+			// catch(e => console.log(e)) // 请求任务的结果处理
+			
 		},
 
 		// 页面上拉触底事件的处理函数
 		onReachBottom: function() {
-			getOrderList();
-			if (!this.pullUpOn) return;
+			this.pullUpOn = true; 
+			if (this.loadding) return;
 			this.loadding = true;
-			if (this.pageIndex == 3) {
+			
+			var param = {'pageNum':this.pageIndex+1};
+					
+			request.get("/driver/order/list",param).
+			then(res => {
 				this.loadding = false;
-				this.pullUpOn = false;
-			} else {
-				this.orderList = this.orderList.concat(this.orderList);
-				this.pageIndex = this.pageIndex + 1;
-			}
+				
+				if(res.data == undefined || res.data.length <= 0 ){
+					console.log("no more",res.orderList);
+					this.pullUpOn = false; 
+				}else {
+					this.orderList = this.orderList.concat(res.data);
+					console.log("orderList",this.orderList)
+					this.pageIndex = this.pageIndex + 1;
+				}
+			}).
+			catch(e => console.log(e)) // 请求任务的结果处理
+
 		}
 	}
 </script>
