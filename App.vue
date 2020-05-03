@@ -12,6 +12,10 @@
 	}
 </script>
 
-<style>
-	/*每个页面公共css */
+<style lang="scss">
+@import "./cool/ui/assets/css/index.scss";
+@import "./assets/css/index.scss";
+page {
+	background-color: #f7f7f7;
+}
 </style>
