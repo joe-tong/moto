@@ -2,7 +2,7 @@
 	<div id='order'>
 		<div  v-for="(item,index) in orderList" :key="index" 
 		:class="[(orderList.length-1)==index?'last':'']"
-		hover-class="hover" :hover-stay-time="150" >
+		hover-class="hover" :hover-stay-time="150" @tap='toMap' >
 		     <div class='order_item'>
 				 <div class="tel">{{item.tel}} <image class='tel_ico' src="../static/tel.png"></image></div>
 				 <div class="address">{{item.address}}</div>
@@ -47,8 +47,12 @@
 					console.log("orderList",this.orderList)
 				}).
 				catch(e => console.log(e)) // 请求任务的结果处理
+			},
+			toMap() {
+				this.$router.push('pages/home/home')
 			}
 		},
+		
 		//页面相关事件处理函数--监听用户下拉动作
 		onPullDownRefresh: function() {
 			//延时为了看效果
