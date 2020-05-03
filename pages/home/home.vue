@@ -15,9 +15,9 @@
 		<view class="demo-button ">
 				<cl-row>
 					<cl-col v-for="(item, index) in list" :key="index" :span="6">
-						<cl-button :type="item.value" :class="generateClassName(index)" round>
+						<!-- <cl-button :type="item.value" :class="generateClassName(index)" round>
 							<text>{{ item.label }}</text>
-						</cl-button>
+						</cl-button> -->
 					</cl-col>
 				</cl-row>
 			</cl-card>
@@ -48,10 +48,10 @@ export default {
 				this.$refs["toast"].open(`${item.label}开发中`);
 			}
 		},
-		generateClassName(index) {
-		  // 调用方法，动态生成index
-		  return `fixed-${index}`;
-		}
+		// generateClassName(index) {
+		//   // 调用方法，动态生成index
+		//   return `fixed-${index}`;
+		// }
 	}
 };
 </script>

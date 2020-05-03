@@ -61,7 +61,8 @@
 		
 		//页面相关事件处理函数--监听用户下拉动作
 		onPullDownRefresh: function() {
-			var param = {'pageNum':1};	
+			this.pageIndex = 1;
+			var param = {'pageNum':pageIndex};	
 					
 			request.get("/driver/order/list",param).
 			then(res => {
