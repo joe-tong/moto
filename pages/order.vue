@@ -2,12 +2,12 @@
 	<view id='order'>
 		<div  v-for="(item,index) in orderList" :key="index" 
 		:class="[(orderList.length-1)==index?'last':'']"
-		hover-class="hover" :hover-stay-time="150" @tap='toMap' >
+		hover-class="hover" :hover-stay-time="150"  >
 		     <div class='order_item'>
-				 <div class="tel">{{item.tel}} <image class='tel_ico' src="../static/tel.png"></image></div>
-				 <div class="address">{{item.address}}</div>
+				 <div class="tel" @tap='toCallPhone(item.tel)'>{{item.tel}} <image class='tel_ico' src="../static/tel.png"></image></div>
+				 <div class="address" @tap='toMap'>{{item.address}}</div>
 				 <div class="distance">相距{{item.distance}}米<image class="map" src="../static/map.png"></image></div>
-				 <button class="state_bt_un" >抢单</button>
+				 <button class="state_bt_un" @tap='toOrder()' >抢单</button>
 		     </div>
 		</div>
 		<!--加载loadding-->
@@ -50,33 +50,30 @@
 		methods: {
 			toMap() {
 				this.$router.push('pages/home/home')
+			},
+			toCallPhone(tel) {
+				 window.location.href = 'tel://'+tel
+			},
+			toOrder(orderId,userId){
+				alert("下单成功")
 			}
 		},
 		
 		//页面相关事件处理函数--监听用户下拉动作
 		onPullDownRefresh: function() {
-			// this.pullUpOn = true;
-			// if (this.loadding) return;
-			// this.loadding = true;
-			
-			// var param = {'pageNum':this.pageIndex+1};
+			var param = {'pageNum':1};	
 					
-			// request.get("/driver/order/list",param).
-			// then(res => {
-			// 	this.loadding = false;
-				
-			// 	if(res.data == undefined || res.data.length <= 0 ){
-			// 		console.log("no more",res.orderList);
-			// 		this.pullUpOn = false; 
-			// 	}else {
-			// 		alert(" more")
-			// 		this.orderList = this.orderList.concat(res.data);
-			// 		console.log("orderList",this.orderList)
-			// 		this.pageIndex = this.pageIndex + 1;
-			// 	}
-			// }).
-			// catch(e => console.log(e)) // 请求任务的结果处理
-			
+			request.get("/driver/order/list",param).
+			then(res => {
+				if(res.data == undefined || res.data.length <= 0 ){
+					console.log("no more",res.orderList);
+				}else {
+					this.orderList = res.data;
+				}
+				uni.stopPullDownRefresh();
+				// this.tui.toast("刷新成功");
+			}).
+			catch(e => console.log(e)) // 请求任务的结果处理
 		},
 
 		// 页面上拉触底事件的处理函数
@@ -100,7 +97,7 @@
 					this.pageIndex = this.pageIndex + 1;
 				}
 			}).
-			catch(e => console.log(e)) // 请求任务的结果处理
+			catch(e => this.loadding = false) // 请求任务的结果处理
 
 		}
 	}
