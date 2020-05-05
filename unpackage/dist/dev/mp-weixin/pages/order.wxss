@@ -1,0 +1,75 @@
+
+#order {
+		background-color: #b3d9b0;
+}
+.order_item {
+		height: 57;
+		width: 94%;
+		background-color: #a8c572;
+		border-radius: 5vw;
+        margin: 0 auto;
+		margin-bottom: 3vw;
+}
+.tel_ico {
+		margin-left: 33%;
+		height: 8vw;
+		width: 7vw;
+}
+.tel_ico:hover {
+		margin-left: 33%;
+		height: 10vw;
+		width: 9vw;
+}
+.address{
+		padding-top: 4vw;
+		height: 15vw;
+		width: 80%;
+		padding-left: 5%;
+		font-size: 5vw;
+		font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.tel {
+		height: 15vw;
+		width: 95%;
+		padding-left: 5%;
+		font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		line-height: 15vw;
+		font-size: 8vw;
+		background-color: #faf0ff;
+		border-radius: 4vw;
+}
+.map {
+		height: 9vw;
+		width: 8vw;
+}
+.distance {
+		height: 14vw;
+		width: 100%;
+		margin-left: 65%;
+		line-height: 20vw;
+		font-size: 4vw;
+		font-weight: 500;
+}
+.state_bt_un {
+		border-radius: 4vw;
+		height: 13vw;
+		width: 100%;
+		background-color: #005500;
+		text-align: center;
+		line-height: 10vw;
+		font-size: 6vw;
+		color: #FFFFFF;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.state_bt_ok {
+		border-radius: 4vw;
+		height: 13vw;
+		width: 100%;
+		background-color: #005500;
+		text-align: center;
+		line-height: 13vw;
+		font-size: 6vw;
+		color: #FFFFFF;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+

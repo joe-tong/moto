@@ -1,0 +1,1 @@
+<view class="cl-card"><block wx:if="{{label||$slots.header}}"><view class="cl-card__header"><text class="cl-card__label">{{label}}</text></view></block><view class="cl-card__container" style="{{'padding:'+(padding)+';'}}"><slot></slot></view><block wx:if="{{$slots.footer}}"><view class="cl-card__footer"></view></block></view>

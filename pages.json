@@ -1,16 +1,11 @@
 {
 	"pages": [
-		// {
-		// 	"path": "components/loadmore/loadmore",
-		// 	"style": {
-		// 	}
-		// },
-		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/order",
 			"style": {
-			    "enablePullDownRefresh": true,
-				"onReachBottomDistance": 50
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": true,
+	     		"onReachBottomDistance": 50
 			}
 		},
 		{
@@ -19,20 +14,26 @@
 		    	"navigationBarTitleText": "首页"
 		    }
 		},
-		
 		{
 		    "path" : "pages/person/person",
 		    "style" : {}
-		}
+		},
+		{
+			"path":"pages/map/map",
+			"style":{
+				"navigationBarTitleText": "地图"
+			}
+		}	
     ],
+
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+    	"backgroundColor": "#F8F8F8"
 	},
 	"easycom": {
-		"autoscan": true,
+    	"autoscan": true,
 		"custom": {
 			"cl-(.*)": "@/cool/ui/components/$1/$1.vue"
 		}

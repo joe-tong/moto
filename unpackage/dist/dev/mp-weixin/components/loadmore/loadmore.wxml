@@ -1,0 +1,1 @@
+<block wx:if="{{visible}}"><view class="tui-loadmore"><view class="tui-loading"></view><view class="tui-loadmore-tips">{{text}}</view></view></block>

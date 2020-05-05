@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "cl-card": "/cool/ui/components/card/card",
+    "cl-list": "/cool/ui/components/list/list",
+    "cl-avatar": "/cool/ui/components/avatar/avatar",
+    "cl-row": "/cool/ui/components/row/row",
+    "cl-col": "/cool/ui/components/col/col",
+    "cl-button": "/cool/ui/components/button/button"
+  }
+}

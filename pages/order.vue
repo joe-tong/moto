@@ -49,7 +49,7 @@
 		},
 		methods: {
 			toMap() {
-				this.$router.push('pages/home/home')
+				this.$router.push('map/map')
 			},
 			toCallPhone(tel) {
 				 window.location.href = 'tel://'+tel
@@ -105,11 +105,17 @@
 </script>
 
 <style>
+	
+	#order {
+		background-color: #b3d9b0;
+	}
 	.order_item {
 		height: 57;
-		width: 100%;
+		width: 94%;
 		background-color: #a8c572;
 		border-radius: 5vw;
+        margin: 0 auto;
+		margin-bottom: 3vw;	
 	}
 	.tel_ico {
 		margin-left: 33%;
@@ -128,16 +134,15 @@
 		padding-left: 5%;
 		font-size: 5vw;
 		font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	
 	}
 	.tel {
 		height: 15vw;
-		width: 100%;
+		width: 95%;
 		padding-left: 5%;
 		font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 		line-height: 15vw;
 		font-size: 8vw;
-		background-color: #dedeff;
+		background-color: #faf0ff;
 		border-radius: 4vw;
 	}
 	.map {
@@ -154,6 +159,7 @@
 	}
 
 	.state_bt_un {
+		border-radius: 4vw;
 		height: 13vw;
 		width: 100%;
 		background-color: #005500;
@@ -165,6 +171,7 @@
 	}
 
 	.state_bt_ok {
+		border-radius: 4vw;
 		height: 13vw;
 		width: 100%;
 		background-color: #005500;
